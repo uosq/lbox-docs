@@ -29,10 +29,14 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 ### Methods
 
+> **Delete()**
+> + **It's not deleted by Lua's garbage collection (WHY??? this is stupid)**
+> + **You NEED to use delete after using the buffer** (we dont want any memory leaks, do we?)
+
 > GetDataBitsLength()
 > + Returns the length of the buffer in bits
 > + You can use this to set or change the m_nLength when modifying a SendNetMsg callback
-> + Return: **integer**
+> + Return type: **integer**
 
 ---
 
@@ -40,7 +44,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 > + Returns the length of the buffer in bytes
 > + You can use this to set or change the m_nLength when modifying a SendNetMsg callback
 > + Its basically the same thing as **GetDataBitsLength()**
-> + Return: **integer**
+> + Return type: **integer**
 
 ---
 
@@ -51,41 +55,114 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 ---
 
-> ReadByte()
-> + Reads 1 byte from the buffer, which means its reading 8 bits of information
-> + Returns whatever info was in the 8 bits that were read
-> + Return: **integer**
+> GetCurBit()
+> + Returns the current bit position
+> + Return type: **integer**
 
 ---
 
-> ReadBit()
-> + Reads 1 bit from the buffer
-> + Returns either a 1 or a 0
-> + Useful for TRUE or FALSE
-> + Return: **integer**
+> SetCurBit( position: **integer** )
+> + Sets the current bit position
+> + Return type: nothing :p
 
 ---
 
-**Good info to have about the next methods: When reading TF2's leaked source code, its good to remember a Word (ReadWord) is 16 bits, and generally you wont need to read 64 bits**
+> #### **READ** Methods
+>> ReadByte()
+>> + Reads 1 byte from the buffer, which means its reading 8 bits of information
+>> + Returns whatever info was in the 8 bits that were read
+>> + Return type: **integer**
+>>
+>> ReadBit()
+>> + Reads 1 bit from the buffer
+>> + Returns either a 1 or a 0
+>> + Useful for TRUE or FALSE
+>> + Return type: **integer**
+>>
+>> ReadFloat( bitLength: integer )
+>> + **bitLength IS OPTIONAL, by default its 32 bits (or 4 bytes)**
+>> + Reads **N bits** (default: 4) from the buffer and returns it as a float.
+>> + Returns the float read as first return value, and current bit position as second return value.
+>> + Return type: **number**, current bit position (**number**)
+>>
+>> ReadInt( bitLength: integer )
+>> + **bitLength IS OPTIONAL**
+>> + Reads **N bits** (default: 32) from the buffer and returns it as a integer.
+>> + Returns the integer read as first return value, and current bit position as second return value.
+>> + Return type: **integer**, current bit position (**integer**)
+>>
+>> ReadString( maxLength: integer )
+>> + Reads a string from the buffer
+>> + maxLength is **NOT** optional
+>> + Return type: **string**, current bit position (**integer**)
 
 ---
 
-> ReadFloat( bitLength: integer )
-> + **bitLength IS OPTIONAL, by default its 32 bits (or 4 bytes)**
-> + Reads **N bytes** (default: 4) from the buffer and returns it as a float.
-> + Returns the float read as first return value, and current bit position as second return value.
-> + Return: **number**
+> #### **WRITE** Methods
+>
+> Be careful to **NOT** overflow the buffer
+>> WriteByte( byte: **number** )
+>> + Writes 1 byte to the buffer, which means its changing 8 bits of information
+>>
+>> WriteBit( bit: **integer** )
+>> + Writes 1 bit to the buffer
+>> + Either a 1 or a 0
+>> + Useful for TRUE or FALSE
+>> + Return type: nothing :p
+>>
+>> WriteByte( byte: **integer** )
+>> + Writes 1 byte to the buffer
+>> + Return type: nothing :p
+>>
+>> WriteFloat( value: **number**, bitLength: **integer** )
+>> + **bitLength IS OPTIONAL, default its 32 bits**
+>> + Writes **N bits** (default: 32) to the buffer
+>> + Return type: nothing :p
+>>
+>> WriteInt( value: **integer** , bitLength: **integer** )
+>> + **bitLength IS OPTIONAL**
+>> + Writes **N bits** (default: 32) to the buffer
+>> + Return type: nothing :p
+>>
+>> WriteString( text: **string** )
+>> + Writes a string to the buffer
+>> + Return type: nothing :p
 
 ---
 
-> ReadInt( bitLength: integer )
-> + **bitLength IS OPTIONAL, by default its 32 bits (or 4 bytes)**
-> + Reads **N bytes** (default: 4) from the buffer and returns it as a float.
-> + Returns the integer read as first return value, and current bit position as second return value.
-> + Return: **number**
+### Examples
+
+Changing clc_Move msg
+
+```lua
+local function SendNetMsg(msg)
+   if msg:GetType() == 9 then --- clc_Move is 9
+      local buffer = BitBuffer()
+
+      buffer:WriteInt(2, 4) --- change new commands
+      buffer:WriteInt(1, 3) --- change backup commands
+      
+      buffer:SetCurBit(0)
+      msg:ReadFromBitBuffer(buffer)
+      buffer:Delete()
+   end
+end
+
+callbacks.Register("SendNetMsg", SendNetMsg)
+```
 
 ---
 
-> ReadString( maxLength: integer )
-> + Reads a string from the buffer
-> + 
+Printing with bitbuffer
+
+```lua
+local buffer = BitBuffer()
+buffer:WriteString("hi mom!")
+buffer:SetCurBit(0)
+
+local text = buffer:ReadString(7)
+print(text)
+
+--- dont forget to delete the buffer
+buffer:Delete()
+```
