@@ -24,7 +24,7 @@ Represents the context in which a model is being drawn in the DrawModel callback
 
 > ### ForcedMaterialOverride ( mat: Material )
 >
-> Replace material used to draw the model. The material can be found or created by **[materials.Create / materials.Find](https://github.com/uosq/lbox-docs/blob/main/Libraries/materials.md)**
+> Replace material used to draw the model. The material can be found or created by **[materials.Create / materials.Find](../Libraries/materials.md)**
 >
 > Return type: nothing
 

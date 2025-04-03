@@ -29,6 +29,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 ### Methods
 
+> [!NOTE]
 > **Delete()**
 > + **It's not deleted by Lua's garbage collection (WHY??? this is stupid)**
 > + **You NEED to use delete after using the buffer** (we dont want any memory leaks, do we?)
