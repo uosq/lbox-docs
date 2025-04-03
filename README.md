@@ -1,2 +1,7 @@
-# lbox-docs
-Documentation with examples and tips on how to use each and every function, as well as explanations on what they do
+# Custom Docs
+
+Most of the info here was taken from the **official documentation** OR from my experience using the API
+
+**Methods are called directly from the object**
+
+**Functions are called from a library**
