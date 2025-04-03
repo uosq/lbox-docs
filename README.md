@@ -1,26 +1,49 @@
-# Custom Docs
+---
+icon: hand-wave
+cover: .gitbook/assets/lbox banner.jpg
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: full
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
 
-Most of the info here was taken from the **official documentation** OR from my experience using the API
+# Hi
 
-**Methods are called directly from the object**
+This is NOT the official docs :skull\_crossbones:
 
-Called with :
+Here are some cool stuff you might like
 
-Example:
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
 
-```lua
-local buffer = BitBuffer()
-buffer:SetCurBit(0)
-buffer:WriteInt(120)
-buffer:SetCurBit(0)
-```
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
+{% endcontent-ref %}
 
-**Functions are called from a library**
+If a method or function doesn't have "()" (parenthesis), then it doesn't have parameters, but you still need the parenthesis
 
-Called with .
+**Methods are called directly from the object (Called with : )**
 
-Example:
+**Functions are called with a library (Called with . )**
 
-```lua
-local pi = math.pi
-```
+Just a friendly reminder:
+
+<mark style="color:green;">**If a text is GREEN, it is important and you should probably read it**</mark>
+
+Im using LuaLS's annotations
+
+{% embed url="https://luals.github.io/wiki/annotations/" %}
+Cool wiki
+{% endembed %}
