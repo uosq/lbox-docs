@@ -12,11 +12,9 @@ For more information, see how [VMT files are made](https://developer.valvesoftwa
 
 <summary><mark style="color:blue;">GetName</mark></summary>
 
-Returns the material name
+* Returns the material name
 
-Return type: <mark style="color:yellow;">**string**</mark>
-
-
+- Return type: <mark style="color:yellow;">**string**</mark>
 
 Example
 
@@ -32,11 +30,10 @@ print(name)
 
 <summary><mark style="color:blue;">GetTextureGroupName</mark></summary>
 
-Returns group the material is part of
+* Returns group the material is part of
 
-See the [texture groups](texture-groups.md) and use the values you want
-
-
+- See the [texture groups](texture-groups.md) and use the values you want
+- Return type: <mark style="color:yellow;">**string**</mark>
 
 Example:
 
@@ -52,9 +49,9 @@ print(group)
 
 <summary><mark style="color:blue;">SetMaterialVarFlag</mark> ( flag: <mark style="color:red;"><strong>integer</strong></mark>, set: <mark style="color:red;"><strong>boolean</strong></mark> )</summary>
 
-Change a material variable flag, see [Material Flags](https://developer.valvesoftware.com/wiki/Material_Flags) for a list of flags. The flag is the integer value of the flag enum, not the string name.
+* Change a material variable flag, see [Material Flags](https://developer.valvesoftware.com/wiki/Material_Flags) for a list of flags. The flag is the integer value of the flag enum, not the string name.
 
-example:
+Example:
 
 ```lua
 local material = materials.Find("white")
@@ -67,11 +64,9 @@ material:SetMaterialVarFlag(E_MaterialFlag.MATERIAL_VAR_NO_DRAW, true)
 
 <summary><mark style="color:blue;">SetShaderParam</mark> ( param: <mark style="color:red;"><strong>string</strong></mark>,  value: <mark style="color:red;"><strong>integer|number|Vector3|string</strong></mark>)</summary>
 
-The value can be a integer, a number, a Vector3 or a string
+* The value can be a integer, a number, a Vector3 or a string
 
-Set a shader parameter, see [Shader Parameters](https://developer.valvesoftware.com/wiki/Category:List_of_Shader_Parameters) for a list of parameters. Supported values are
-
-
+- Set a shader parameter, see [Shader Parameters](https://developer.valvesoftware.com/wiki/Category:List_of_Shader_Parameters) for a list of parameters. Supported values are
 
 Example:
 
@@ -88,9 +83,9 @@ material:SetShaderParam("$color2", Vector3(1, 0, 0))
 
 <summary><mark style="color:blue;">ColorModulate</mark> ( red: <mark style="color:red;"><strong>number</strong></mark>, green: <mark style="color:red;"><strong>number</strong></mark>, blue: <mark style="color:red;"><strong>number</strong></mark> )</summary>
 
-Modulate the color of the given material
+* Modulate the color of the given material
 
-<mark style="color:green;">**All the parameters should be in the \[0, 1] range**</mark>
+- <mark style="color:green;">**All the parameters should be in the \[0, 1] range**</mark>
 
 </details>
 
@@ -98,9 +93,9 @@ Modulate the color of the given material
 
 <summary><mark style="color:blue;">AlphaModulate</mark> ( alpha: <mark style="color:red;"><strong>number</strong></mark> ) </summary>
 
-Modulate transparency of material by given alpha value
+* Modulate transparency of material by given alpha value
 
-<mark style="color:green;">Uses the \[0, 1] range</mark>
+- <mark style="color:green;">Uses the \[0, 1] range</mark>
 
 </details>
 

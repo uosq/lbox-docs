@@ -36,7 +36,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 <summary><mark style="color:green;">Delete</mark></summary>
 
-You <mark style="color:yellow;">SHOULD</mark> use this after using the buffer (You dont want any memory leaks, do you?)
+* You <mark style="color:yellow;">SHOULD</mark> use this after using the buffer (You dont want any memory leaks, do you?)
 
 </details>
 
@@ -44,11 +44,11 @@ You <mark style="color:yellow;">SHOULD</mark> use this after using the buffer (Y
 
 <summary><mark style="color:blue;">GetDataBitsLength</mark></summary>
 
-Returns the length of the buffer in bits
+* Returns the length of the buffer in bits
 
-You can use this to set or change the m\_nLength when modifying a SendNetMsg callback
+- You can use this to set or change the m\_nLength when modifying a SendNetMsg callback
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+* Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
 
@@ -56,11 +56,11 @@ Return type: <mark style="color:yellow;">**integer**</mark>
 
 <summary><mark style="color:blue;">GetDataBytesLength</mark></summary>
 
-Returns the length of the buffer in bytes
+* Returns the length of the buffer in bytes
 
-Its basically the same thing as **GetDataBitsLength()**
+- Its basically the same thing as **GetDataBitsLength()**
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+* Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
 
@@ -68,11 +68,11 @@ Return type: <mark style="color:yellow;">**integer**</mark>
 
 <summary><mark style="color:blue;">Reset</mark></summary>
 
-Resets the read position to the beginning of the buffer.
+* Resets the read position to the beginning of the buffer.
 
-This is useful if you want to read the buffer multiple times, but it is not necessary.
+- This is useful if you want to read the buffer multiple times, but it is not necessary.
 
-This is basically <mark style="color:blue;">SetCurBit</mark>(0)
+* This is basically <mark style="color:blue;">SetCurBit</mark>(0)
 
 </details>
 
@@ -80,9 +80,9 @@ This is basically <mark style="color:blue;">SetCurBit</mark>(0)
 
 <summary><mark style="color:blue;">GetCurBit</mark></summary>
 
-Returns the current bit position
+* Returns the current bit position
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+- Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
 
@@ -90,7 +90,7 @@ Return type: <mark style="color:yellow;">**integer**</mark>
 
 <summary><mark style="color:blue;">SetCurBit</mark> ( position: <mark style="color:red;"><strong>integer</strong></mark> )</summary>
 
-Sets the current bit position
+* Sets the current bit position
 
 </details>
 
@@ -100,13 +100,13 @@ Sets the current bit position
 
 <summary><mark style="color:blue;">ReadByte</mark></summary>
 
-Reads 1 byte from the buffer, which means its reading 8 bits of information
+* Reads 1 byte from the buffer, which means its reading 8 bits of information
 
-Returns whatever info was in the 8 bits that were read
+- Returns whatever info was in the 8 bits that were read
 
-It starts from the current bit position
+* It starts from the current bit position
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+- Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
 
@@ -114,11 +114,11 @@ Return type: <mark style="color:yellow;">**integer**</mark>
 
 <summary><mark style="color:blue;">ReadBit</mark></summary>
 
-Reads 1 bit from the buffer
+* Reads 1 bit from the buffer
 
-Starts at the current bit position
+- Starts at the current bit position
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+* Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
 
@@ -126,11 +126,11 @@ Return type: <mark style="color:yellow;">**integer**</mark>
 
 <summary><mark style="color:blue;">ReadFloat</mark> ( bitLength: <mark style="color:red;"><strong>integer</strong></mark> )</summary>
 
-<mark style="color:green;">bitLength IS OPTIONAL, default is</mark> <mark style="color:green;"></mark><mark style="color:green;">**32**</mark> <mark style="color:green;"></mark><mark style="color:green;">bits</mark>
+* <mark style="color:green;">bitLength IS OPTIONAL, default is</mark> <mark style="color:green;"></mark><mark style="color:green;">**32**</mark> <mark style="color:green;"></mark><mark style="color:green;">bits</mark>
 
-Reads **N bits** (default: 32) from the buffer and returns it as a number.
+- Reads **N bits** (default: 32) from the buffer and returns it as a number.
 
-Return type: <mark style="color:yellow;">**number**</mark>
+* Return type: <mark style="color:yellow;">**number**</mark>
 
 </details>
 
@@ -138,11 +138,11 @@ Return type: <mark style="color:yellow;">**number**</mark>
 
 <summary><mark style="color:blue;">ReadInt</mark> ( bitLength: <mark style="color:red;"><strong>integer</strong></mark> )</summary>
 
-<mark style="color:green;">bitLength IS OPTIONAL, default is</mark> <mark style="color:green;"></mark><mark style="color:green;">**32**</mark> <mark style="color:green;"></mark><mark style="color:green;">bits</mark>
+* <mark style="color:green;">bitLength IS OPTIONAL, default is</mark> <mark style="color:green;"></mark><mark style="color:green;">**32**</mark> <mark style="color:green;"></mark><mark style="color:green;">bits</mark>
 
-Reads **N bits** (default: 32) from the buffer and returns it as a integer.
+- Reads **N bits** (default: 32) from the buffer and returns it as a integer.
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+* Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
 
@@ -150,11 +150,11 @@ Return type: <mark style="color:yellow;">**integer**</mark>
 
 <summary><mark style="color:blue;">ReadString</mark> ( maxLength: <mark style="color:red;"><strong>integer</strong></mark> )</summary>
 
-Reads a string from the buffer
+* Reads a string from the buffer
 
-<mark style="color:green;">maxLength is</mark> <mark style="color:green;"></mark><mark style="color:green;">**NOT**</mark> <mark style="color:green;"></mark><mark style="color:green;">optional</mark>
+- <mark style="color:green;">maxLength is</mark> <mark style="color:green;"></mark><mark style="color:green;">**NOT**</mark> <mark style="color:green;"></mark><mark style="color:green;">optional</mark>
 
-Return type: <mark style="color:yellow;">**string**</mark>
+* Return type: <mark style="color:yellow;">**string**</mark>
 
 </details>
 
@@ -166,7 +166,7 @@ Be careful to **NOT** overflow the buffer
 
 <summary><mark style="color:blue;">WriteByte</mark> ( value: <mark style="color:red;"><strong>number</strong></mark> )</summary>
 
-Writes 1 byte to the buffer, which means its changing 8 bits of information in the current bit position
+* Writes 1 byte to the buffer, which means its changing 8 bits of information in the current bit position
 
 </details>
 
@@ -174,7 +174,7 @@ Writes 1 byte to the buffer, which means its changing 8 bits of information in t
 
 <summary><mark style="color:blue;">WriteInt</mark> ( value: <mark style="color:red;"><strong>number</strong></mark> )</summary>
 
-Writes 1 integer to the buffer in the current bit position
+* Writes 1 integer to the buffer in the current bit position
 
 </details>
 
@@ -182,7 +182,7 @@ Writes 1 integer to the buffer in the current bit position
 
 <summary><mark style="color:blue;">WriteFloat</mark> ( value: <mark style="color:red;"><strong>number</strong></mark>, bitLength: <mark style="color:red;"><strong>integer</strong></mark> )</summary>
 
-Writes a float number to the buffer with the <mark style="color:green;">**OPTIONAL**</mark> bitLength (default is 32)
+* Writes a float number to the buffer with the <mark style="color:green;">**OPTIONAL**</mark> bitLength (default is 32)
 
 </details>
 
@@ -190,7 +190,7 @@ Writes a float number to the buffer with the <mark style="color:green;">**OPTION
 
 <summary><mark style="color:blue;">WriteString</mark> ( text: <mark style="color:red;"><strong>string</strong></mark> )</summary>
 
-Writes the text to the buffer
+* Writes the text to the buffer
 
 </details>
 

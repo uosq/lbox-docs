@@ -19,9 +19,9 @@ Able to use with most entities
 
 <summary><mark style="color:blue;">IsValid</mark></summary>
 
-Returns whether the entity is valid. This is done automatically and all other functions will return nil if the entity is invalid.
+* Returns whether the entity is valid. This is done automatically and all other functions will return nil if the entity is invalid.
 
-Return type: <mark style="color:yellow;">**boolean**</mark>
+- Return type: <mark style="color:yellow;">**boolean**</mark>
 
 Example:
 
@@ -38,9 +38,9 @@ end
 
 <summary><mark style="color:blue;">GetName</mark></summary>
 
-Returns the name string of the entity if its a player
+* Returns the name string of the entity if its a player
 
-Return type: <mark style="color:yellow;">**string**</mark>?
+- Return type: <mark style="color:yellow;">**string**</mark>?
 
 Example:
 
@@ -57,13 +57,13 @@ print(me:GetName())
 
 <summary><mark style="color:blue;">GetClass</mark></summary>
 
-Returns the class of the entity
+* Returns the class of the entity
 
-DONT BE CONFUSED WITH THE ACTUAL PLAYER's CLASS! (like spy, demoman, ... etc)
+- DONT BE CONFUSED WITH THE ACTUAL PLAYER's CLASS! (like spy, demoman, ... etc)
 
-this returns the entity's class (CTFPlayer, CObjectSentrygun, ... etc)
+* this returns the entity's class (CTFPlayer, CObjectSentrygun, ... etc)
 
-Return type: <mark style="color:yellow;">**string**</mark>
+- Return type: <mark style="color:yellow;">**string**</mark>
 
 Example:
 
@@ -82,9 +82,9 @@ print(me:GetClass())
 
 <summary><mark style="color:blue;">GetIndex</mark></summary>
 
-Returns entity's index
+* Returns entity's index
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+- Return type: <mark style="color:yellow;">**integer**</mark>
 
 Example:
 
@@ -101,9 +101,9 @@ print(me:GetIndex())
 
 <summary><mark style="color:blue;">GetTeamNumber</mark></summary>
 
-Returns the entity's team number
+* Returns the entity's team number
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+- Return type: <mark style="color:yellow;">**integer**</mark>
 
 Example:
 
@@ -125,9 +125,9 @@ print(text)
 
 <summary><mark style="color:blue;">GetAbsOrigin</mark></summary>
 
-Returns the absolute position of the entity
+* Returns the absolute position of the entity
 
-Return type: <mark style="color:yellow;">**Vector3**</mark>
+- Return type: <mark style="color:yellow;">**Vector3**</mark>
 
 Example:
 
@@ -144,7 +144,7 @@ print(me:GetAbsOrigin())
 
 <summary><mark style="color:blue;">SetAbsOrigin</mark> ( origin: <mark style="color:red;">Vector3</mark> )</summary>
 
-Sets the absolute position of the entity
+* Sets the absolute position of the entity
 
 Example:
 
@@ -161,9 +161,9 @@ me:SetAbsOrigin(Vector3(200, 200, 200))
 
 <summary><mark style="color:blue;">GetAbsAngles</mark></summary>
 
-Gets the absolute angles of the entity
+* Gets the absolute angles of the entity
 
-Return type: <mark style="color:yellow;">**Vector3**</mark>
+- Return type: <mark style="color:yellow;">**Vector3**</mark>
 
 Example:
 
@@ -181,11 +181,11 @@ print(angle)
 
 <summary><mark style="color:blue;">SetAbsAngles</mark> ( angle: <mark style="color:red;"><strong>Vector3</strong></mark> )</summary>
 
-Sets the absolute angles of the entity
+* Sets the absolute angles of the entity
 
-<mark style="color:green;">FrameStageNotify might override this with whatever data gets received so you should use this in that callback</mark>
+- <mark style="color:green;">FrameStageNotify might override this with whatever data gets received so you should use this in that callback</mark>
 
-This is really good for managing your own entities
+* This is really good for managing your own entities
 
 Example:
 
@@ -213,9 +213,9 @@ callbacks.Register("FrameStageNotify", FrameStageNotify)
 
 <summary><mark style="color:blue;">GetHealth</mark></summary>
 
-Gets the health of the entity
+* Gets the health of the entity
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+- Return type: <mark style="color:yellow;">**integer**</mark>
 
 Example:
 
@@ -233,9 +233,9 @@ print("Your health is " .. health)
 
 <summary><mark style="color:blue;">GetMaxHealth</mark></summary>
 
-Gets the base MAX health of the entity (this is different from the MAX OVERHEALED health)
+* Gets the base MAX health of the entity (this is different from the MAX OVERHEALED health)
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+- Return type: <mark style="color:yellow;">**integer**</mark>
 
 Example:
 
@@ -253,11 +253,11 @@ print("Your max health is " .. maxhealth)
 
 <summary><mark style="color:blue;">GetMins</mark></summary>
 
-This returns the mins of the entity
+* This returns the mins of the entity
 
-You need to combine the return value of this with the origin
+- You need to combine the return value of this with the origin
 
-Think of it like the position to the entity's bottom bounding box
+* Think of it like the position to the entity's bottom bounding box
 
 Example:
 
@@ -277,11 +277,11 @@ print(pos)
 
 <summary><mark style="color:blue;">GetMaxs</mark></summary>
 
-This returns the maxs of the entity
+* This returns the maxs of the entity
 
-You need to combine the return value of this with the origin
+- You need to combine the return value of this with the origin
 
-Think of it like the position to the entity's top bounding box
+* Think of it like the position to the entity's top bounding box
 
 Example:
 
@@ -301,9 +301,9 @@ print(pos)
 
 <summary><mark style="color:blue;">IsPlayer</mark></summary>
 
-Returns true if the entity is a player, or false if not
+* Returns true if the entity is a player, or false if not
 
-Return type: <mark style="color:yellow;">**boolean**</mark>
+- Return type: <mark style="color:yellow;">**boolean**</mark>
 
 Example:
 
@@ -320,9 +320,9 @@ print(me:IsPlayer()) --- yes
 
 <summary><mark style="color:blue;">IsWeapon</mark></summary>
 
-Returns true if the entity is a weapon, and false if not
+* Returns true if the entity is a weapon, and false if not
 
-Return type: <mark style="color:yellow;">**boolean**</mark>
+- Return type: <mark style="color:yellow;">**boolean**</mark>
 
 Example:
 
@@ -339,9 +339,9 @@ print(me:IsWeapon())
 
 <summary><mark style="color:blue;">IsAlive</mark></summary>
 
-Returns true if the entity is alive
+* Returns true if the entity is alive
 
-<mark style="color:green;">**THIS MIGHT GIVE A FALSE POSITIVE! Resupply cabinet, some other props, whatever building a engineer is holding in his arms IS ALIVE! Consider using GetHealth for them**</mark>
+- <mark style="color:green;">**THIS MIGHT GIVE A FALSE POSITIVE! Resupply cabinet, some other props, whatever building a engineer is holding in his arms IS ALIVE! Consider using GetHealth for them**</mark>
 
 Example:
 
@@ -358,9 +358,9 @@ print(me:IsAlive())
 
 <summary><mark style="color:blue;">EstimateAbsVelocity</mark></summary>
 
-Returns the estimated absolute velocity of the entity
+* Returns the estimated absolute velocity of the entity
 
-Return type: <mark style="color:yellow;">**Vector3**</mark>
+- Return type: <mark style="color:yellow;">**Vector3**</mark>
 
 Example:
 
@@ -377,11 +377,11 @@ print("Your velocity is " .. me:EstimateAbsVelocity())
 
 <summary><mark style="color:blue;">GetMoveType</mark></summary>
 
-Returns the move type of the entity
+* Returns the move type of the entity
 
-Learn more about it [here](move-types.md)
+- Learn more about it [here](move-types.md)
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+* Return type: <mark style="color:yellow;">**integer**</mark>
 
 Example:
 
@@ -399,9 +399,9 @@ print(movetype)
 
 <summary><mark style="color:blue;">HitboxSurroundingBox</mark></summary>
 
-Returns the hitbox surrounding box of the entity as table of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3) mins and maxs
+* Returns the hitbox surrounding box of the entity as table of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3) mins and maxs
 
-Return type: { \[1]: <mark style="color:red;">**Vector3**</mark>, \[2]: <mark style="color:red;">**Vector3**</mark> }
+- Return type: { \[1]: <mark style="color:red;">**Vector3**</mark>, \[2]: <mark style="color:red;">**Vector3**</mark> }
 
 Example:
 
@@ -419,11 +419,11 @@ print(box)
 
 <summary><mark style="color:blue;">EntitySpaceHitboxSurroundingBox</mark></summary>
 
-Returns the hitbox surrounding box of the entity in entity space as table of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3) mins and maxs
+* Returns the hitbox surrounding box of the entity in entity space as table of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3) mins and maxs
 
-Its relative, like <mark style="color:blue;">GetMins</mark> and <mark style="color:blue;">GetMaxs</mark>
+- Its relative, like <mark style="color:blue;">GetMins</mark> and <mark style="color:blue;">GetMaxs</mark>
 
-Return type: { \[1]: <mark style="color:red;">**Vector3**</mark>, \[2]: <mark style="color:red;">**Vector3**</mark> }
+* Return type: { \[1]: <mark style="color:red;">**Vector3**</mark>, \[2]: <mark style="color:red;">**Vector3**</mark> }
 
 Example:
 
@@ -441,7 +441,7 @@ print(box)
 
 <summary><mark style="color:blue;">SetupBones</mark> ( boneMask: <mark style="color:red;"><strong>integer</strong></mark>?, currentTime: <mark style="color:red;">number</mark>? )</summary>
 
-Both boneMask and currentTime are optional, you can just do it without changing any of them
+* Both boneMask and currentTime are optional, you can just do it without changing any of them
 
 Example:
 
@@ -461,9 +461,9 @@ end
 
 <summary><del>GetHitboxes ( currentTime: <mark style="color:red;"><strong>number</strong></mark>? )</del> Deprecated: use SetupBones instead!</summary>
 
-currentTime can be nil or just dont change it
+* currentTime can be nil or just dont change it
 
-Returns world-transformed hitboxes of the entity as table of tables, each containing 2 entries of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3): mins and maxs positions of each hitbox
+- Returns world-transformed hitboxes of the entity as table of tables, each containing 2 entries of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3): mins and maxs positions of each hitbox
 
 Example table
 
@@ -494,9 +494,9 @@ These are only available for Player entities (class CTFPlayer)
 
 <summary><mark style="color:blue;">GetMaxBuffedHealth</mark></summary>
 
-Gets the max health a overhealed player can have, for example heavy will be 450
+* Gets the max health a overhealed player can have, for example heavy will be 450
 
-Return type: <mark style="color:yellow;">**integer**</mark>
+- Return type: <mark style="color:yellow;">**integer**</mark>
 
 Example:
 
@@ -518,9 +518,9 @@ These are usually entities attached to another entity, for example cosmetics fro
 
 <summary><mark style="color:blue;">GetMoveChild</mark></summary>
 
-Returns the first entity attached to the entity
+* Returns the first entity attached to the entity
 
-Return type: <mark style="color:yellow;">**entity**</mark>?
+- Return type: <mark style="color:yellow;">**entity**</mark>?
 
 </details>
 
@@ -528,9 +528,9 @@ Return type: <mark style="color:yellow;">**entity**</mark>?
 
 <summary><mark style="color:blue;">GetMovePeer</mark></summary>
 
-Returns the next entity attached to the entity
+* Returns the next entity attached to the entity
 
-Return type: <mark style="color:yellow;">**entity**</mark>?
+- Return type: <mark style="color:yellow;">**entity**</mark>?
 
 </details>
 

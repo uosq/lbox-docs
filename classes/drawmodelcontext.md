@@ -16,11 +16,9 @@ Methods that you can use with basically any DrawModel callback
 
 <summary><mark style="color:blue;">Execute</mark></summary>
 
-Draw the model immediately in the current state. Can be called multiple times
+* Draw the model immediately in the current state. Can be called multiple times
 
-Useful for stacking materials
-
-
+- Useful for stacking materials
 
 Example:
 
@@ -54,9 +52,7 @@ callbacks.Register("DrawModel", DrawModel)
 
 <summary><mark style="color:blue;">DrawExtraPass</mark></summary>
 
-Basically Execute() with another name
-
-just use Execute() instead
+* Basically Execute() with another name, just use Execute() instead
 
 </details>
 
@@ -64,11 +60,9 @@ just use Execute() instead
 
 <summary><mark style="color:blue;">GetModelName</mark></summary>
 
-Gets the model's name
+* Gets the model's name
 
-Return type: <mark style="color:yellow;">**string**</mark>
-
-
+- Return type: <mark style="color:yellow;">**string**</mark>
 
 Example:
 
@@ -90,15 +84,13 @@ callbacks.Register("DrawModel", DrawModel)
 
 <summary><mark style="color:blue;">GetEntity</mark></summary>
 
-Gets the entity linked with the drawn model
+* Gets the entity linked with the drawn model
 
-<mark style="color:green;">It can be nil</mark>
+- <mark style="color:green;">It can be nil</mark>
 
-<mark style="color:green;">**If its nil, it's most likely a dynamic prop like the resupply cabinet, orange cone in itemtest, viewmodel weapon, etc**</mark>
+* <mark style="color:green;">**If its nil, it's most likely a dynamic prop like the resupply cabinet, orange cone in itemtest, viewmodel weapon, etc**</mark>
 
-Return type: <mark style="color:yellow;">**Entity**</mark>?
-
-
+- Return type: <mark style="color:yellow;">**Entity**</mark>?
 
 Example:
 
@@ -120,9 +112,7 @@ callbacks.Register("DrawModel", DrawModel)
 
 <summary><mark style="color:blue;">DepthRange</mark> ( zNear: <mark style="color:red;"><strong>number</strong></mark>, zFar: <mark style="color:red;"><strong>number</strong></mark> )</summary>
 
-<mark style="color:green;">Needs to be set to ( 0, 1 ) after drawing the model! like this:</mark> DepthRange(0, 1)
-
-
+* <mark style="color:green;">Needs to be set to ( 0, 1 ) after drawing the model! like this:</mark> DepthRange(0, 1)
 
 Example:
 
@@ -144,9 +134,7 @@ callbacks.Register("DrawModel", DrawModel)
 
 <summary><mark style="color:blue;">SuppressEngineLighting</mark> ( supress: <mark style="color:red;"><strong>boolean</strong></mark> )</summary>
 
-Suppresses engine lighting when drawing the model
-
-
+* Suppresses engine lighting when drawing the model
 
 Example:
 
@@ -164,11 +152,9 @@ end
 
 <summary><mark style="color:blue;">ForcedMaterialOverride</mark> ( material: <a href="material/"><mark style="color:red;"><strong>Material</strong></mark></a>? )</summary>
 
-Change the parameter `material` to apply a different material to the drawn model
+* Change the parameter `material` to apply a different material to the drawn model
 
-Make `material` be nil to change it to the original material
-
-
+- Make `material` be nil to change it to the original material
 
 Example:
 
@@ -200,13 +186,11 @@ Methods that might do something when Lmaobox is doing something
 
 <summary><mark style="color:blue;">IsDrawingAntiAim</mark></summary>
 
-Returns true when Lmaobox is drawing the Anti Aim indicator in this DrawModel callback
+* Returns true when Lmaobox is drawing the Anti Aim indicator in this DrawModel callback
 
-Returns false when Lmaobox is not drawing the Anti Aim indicator in this DrawModel callback
+- Returns false when Lmaobox is not drawing the Anti Aim indicator in this DrawModel callback
 
-Return type: <mark style="color:yellow;">**boolean**</mark>
-
-
+* Return type: <mark style="color:yellow;">**boolean**</mark>
 
 Example:
 
@@ -226,13 +210,11 @@ callbacks.Register("DrawModel", DrawModel)
 
 <summary><mark style="color:blue;">IsDrawingBackTrack</mark></summary>
 
-Returns true when Lmaobox is drawing the Backtrack indicator in this DrawModel callback
+* Returns true when Lmaobox is drawing the Backtrack indicator in this DrawModel callback
 
-Returns false when Lmaobox is not drawing the Backtrack indicator in this DrawModel callback
+- Returns false when Lmaobox is not drawing the Backtrack indicator in this DrawModel callback
 
-Return type: <mark style="color:yellow;">**boolean**</mark>
-
-
+* Return type: <mark style="color:yellow;">**boolean**</mark>
 
 Example:
 
@@ -252,13 +234,11 @@ callbacks.Register("DrawModel", DrawModel)
 
 <summary><mark style="color:blue;">IsDrawingGlow</mark></summary>
 
-Returns true when Lmaobox is drawing the Glow indicator in this DrawModel callback
+* Returns true when Lmaobox is drawing the Glow indicator in this DrawModel callback
 
-Returns false when Lmaobox is not drawing the Glow indicator in this DrawModel callback
+- Returns false when Lmaobox is not drawing the Glow indicator in this DrawModel callback
 
-Return type: <mark style="color:yellow;">**boolean**</mark>
-
-
+* Return type: <mark style="color:yellow;">**boolean**</mark>
 
 Example:
 
@@ -280,13 +260,11 @@ callbacks.Register("DrawModel", DrawModel)
 
 <summary><mark style="color:blue;">SetColorModulation</mark> ( red: <mark style="color:red;"><strong>integer</strong></mark>, green: <mark style="color:green;"><strong>integer</strong></mark>, blue: <mark style="color:blue;"><strong>integer</strong></mark> )</summary>
 
-You will probably use this
+* You will probably use this
 
-Changes the color of the drawn model to whatever you want
+- Changes the color of the drawn model to whatever you want
 
-<mark style="color:green;">**red, green and blue parameters are all in the \[0, 1] range**</mark>
-
-
+* <mark style="color:green;">**red, green and blue parameters are all in the \[0, 1] range**</mark>
 
 Example:
 
@@ -313,13 +291,11 @@ callbacks.Register("DrawModel", DrawModel)
 
 <summary><mark style="color:blue;">SetAlphaModulation</mark> ( alpha: <mark style="color:red;"><strong>number</strong></mark> )</summary>
 
-Sets the alpha modulation of the model
+* Sets the alpha modulation of the model
 
-You will probably use this
+- You will probably use this
 
-<mark style="color:green;">**alpha is in the \[0, 1] range**</mark>
-
-
+* <mark style="color:green;">**alpha is in the \[0, 1] range**</mark>
 
 Example:
 
@@ -345,13 +321,9 @@ callbacks.Register("DrawModel", MakePlayersTransparent)
 
 <summary><mark style="color:blue;">StudioSetColorModulation</mark> ( red: <mark style="color:red;"><strong>integer</strong></mark>, green: <mark style="color:green;"><strong>integer</strong></mark>, blue: <mark style="color:blue;"><strong>integer</strong></mark> )</summary>
 
-Changes the color of the drawn studio model to whatever you want
+* Changes the color of the drawn studio model to whatever you want
 
-<mark style="color:green;">**red, green and blue parameters are all in the \[0, 1] range**</mark>
-
-
-
-Example:
+- <mark style="color:green;">**red, green and blue parameters are all in the \[0, 1] range**</mark>
 
 Same thing as [SetColorModulation](drawmodelcontext.md#setcolormodulation-red-integer-green-integer-blue-integer)
 
@@ -361,13 +333,9 @@ Same thing as [SetColorModulation](drawmodelcontext.md#setcolormodulation-red-in
 
 <summary><mark style="color:blue;">StudioSetAlphaModulation</mark> ( alpha: <mark style="color:red;"><strong>number</strong></mark> )</summary>
 
-Sets the alpha modulation of the studio model
+* Sets the alpha modulation of the studio model
 
-<mark style="color:green;">**alpha is in the \[0, 1] range**</mark>
-
-
-
-Example:
+- <mark style="color:green;">**alpha is in the \[0, 1] range**</mark>
 
 Same thing as [SetAlphaModulation](drawmodelcontext.md#setalphamodulation-alpha-number)
 
