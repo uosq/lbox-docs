@@ -11,6 +11,10 @@ description: >-
 
 ## Methods
 
+### Generic
+
+Able to use with most entities
+
 <details>
 
 <summary><mark style="color:blue;">IsValid</mark></summary>
@@ -22,8 +26,8 @@ Return type: <mark style="color:yellow;">**boolean**</mark>
 Example:
 
 ```lua
-local player = entities.GetLocalPlayer()
-if not player:IsValid() then print("localplayer is invalid!") end
+local me = entities.GetLocalPlayer()
+if not me:IsValid() then print("localplayer is invalid!") end
 ```
 
 </details>
@@ -39,10 +43,10 @@ Return type: <mark style="color:yellow;">**string**</mark>?
 Example:
 
 ```lua
-local player = entities.GetLocalPlayer()
-if not player then return end
+local me = entities.GetLocalPlayer()
+if not me then return end
 
-print(player:GetName())
+print(me:GetName())
 ```
 
 </details>
@@ -62,10 +66,10 @@ Return type: <mark style="color:yellow;">**string**</mark>
 Example:
 
 ```lua
-local player = entities.GetLocalPlayer()
-if not player then return end
+local me = entities.GetLocalPlayer()
+if not me then return end
 
-print(player:GetClass())
+print(me:GetClass())
 ```
 
 
@@ -83,10 +87,10 @@ Return type: <mark style="color:yellow;">**integer**</mark>
 Example:
 
 ```lua
-local player = entities.GetLocalPlayer()
-if not player then return end
+local me = entities.GetLocalPlayer()
+if not me then return end
 
-print(player:GetIndex())
+print(me:GetIndex())
 ```
 
 </details>
@@ -103,10 +107,10 @@ Example:
 
 {% code overflow="wrap" %}
 ```lua
-local player = entities.GetLocalPlayer()
-if not player then return end
+local me = entities.GetLocalPlayer()
+if not me then return end
 
-local team = player:GetTeamNumber()
+local team = me:GetTeamNumber()
 local text = team == 2 and "red team" or team == 3 and "blu team" or "spectator team"
 
 print(text)
@@ -150,3 +154,270 @@ me:SetAbsOrigin(Vector3(200, 200, 200))
 ```
 
 </details>
+
+<details>
+
+<summary><mark style="color:blue;">GetAbsAngles</mark></summary>
+
+Gets the absolute angles of the entity
+
+Return type: <mark style="color:yellow;">**Vector3**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local angle = me:GetAbsAngles()
+print(angle)
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">SetAbsAngles</mark> ( angle: <mark style="color:red;"><strong>Vector3</strong></mark> )</summary>
+
+Sets the absolute angles of the entity
+
+<mark style="color:green;">FrameStageNotify might override this with whatever data gets received so you should use this in that callback</mark>
+
+This is really good for managing your own entities
+
+Example:
+
+{% code overflow="wrap" %}
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local angles = Vector3(0, 0, 0)
+
+local function FrameStageNotify(stage)
+    --- we wait for the client to update the entity with whatever data was received so we can write after it
+    if stage == E_ClientFrameStage.FRAME_NET_UPDATE_END then
+        me:SetAbsAngles(angles)
+    end
+end
+
+callbacks.Register("FrameStageNotify", FrameStageNotify)
+```
+{% endcode %}
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">GetHealth</mark></summary>
+
+Gets the health of the entity
+
+Return type: <mark style="color:yellow;">**integer**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local health = me:GetHealth()
+print("Your health is " .. health)
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">GetMaxHealth</mark></summary>
+
+Gets the base MAX health of the entity (this is different from the MAX OVERHEALED health)
+
+Return type: <mark style="color:yellow;">**integer**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local maxhealth = me:GetMaxHealth()
+print("Your max health is " .. maxhealth)
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">GetMins</mark></summary>
+
+This returns the mins of the entity
+
+You need to combine the return value of this with the origin
+
+Think of it like the position to the entity's bottom bounding box
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local mins = me:GetMins()
+local origin = me:GetAbsOrigin()
+local pos = mins + origin
+print(pos)
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">GetMaxs</mark></summary>
+
+This returns the maxs of the entity
+
+You need to combine the return value of this with the origin
+
+Think of it like the position to the entity's top bounding box
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local maxs = me:GetMaxs()
+local origin = me:GetAbsOrigin()
+local top = maxs + origin
+print(pos)
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">IsPlayer</mark></summary>
+
+Returns true if the entity is a player, or false if not
+
+Return type: <mark style="color:yellow;">**boolean**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+print(me:IsPlayer()) --- yes
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">IsWeapon</mark></summary>
+
+Returns true if the entity is a weapon, and false if not
+
+Return type: <mark style="color:yellow;">**boolean**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+print(me:IsWeapon())
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">IsAlive</mark></summary>
+
+Returns true if the entity is alive
+
+<mark style="color:green;">**THIS MIGHT GIVE A FALSE POSITIVE! Resupply cabinet, some other props, whatever building a engineer is holding in his arms IS ALIVE! Consider using GetHealth for them**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+print(me:IsAlive())
+```
+
+</details>
+
+### Player methods
+
+These are only available for Player entities (class CTFPlayer)
+
+<details>
+
+<summary><mark style="color:blue;">GetMaxBuffedHealth</mark></summary>
+
+Gets the max health a overhealed player can have, for example heavy will be 450
+
+Return type: <mark style="color:yellow;">**integer**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local maxbuffed = me:GetMaxBuffedHealth()
+print("Your max overheal health is " .. maxbuffed)
+```
+
+</details>
+
+### Attachments
+
+These are usually entities attached to another entity, for example cosmetics from players
+
+<details>
+
+<summary><mark style="color:blue;">GetMoveChild</mark></summary>
+
+Returns the first entity attached to the entity
+
+Return type: <mark style="color:yellow;">**entity**</mark>?
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">GetMovePeer</mark></summary>
+
+Returns the next entity attached to the entity
+
+Return type: <mark style="color:yellow;">**entity**</mark>?
+
+</details>
+
+<details>
+
+<summary>How to use both GetMoveChild and GetMovePeer</summary>
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+--- this is not the best way, but if it works it works
+local moveChild = me:GetMoveChild()
+--- until moveChild turns nil, this will run
+while moveChild do
+    --- do something here :p
+    
+    --- get the next attachment from the list
+    moveChild = moveChild:GetMovePeer()
+end
+```
+
+</details>
+
