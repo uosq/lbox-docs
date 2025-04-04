@@ -42,7 +42,7 @@ Just a friendly reminder:
 
 <mark style="color:green;">**If a text is GREEN, it is important and you should probably read it**</mark>
 
-Im using LuaLS's annotations
+This doc uses Lua Language Server's annotations
 
 {% embed url="https://luals.github.io/wiki/annotations/" %}
 Cool wiki

@@ -7,7 +7,7 @@ description: >-
 
 # Entity
 
-## This is not finished, there are so much methods that I decided to make the other classes first
+## This is not finished, there are so much methods that I decided to make the other stuff first
 
 ## Methods
 
