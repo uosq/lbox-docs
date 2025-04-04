@@ -13,6 +13,7 @@
   * [Shader Parameters](https://developer.valvesoftware.com/wiki/Category:List_of_Shader_Parameters)
 * [Entity](classes/entity/README.md)
   * [Render Flags](classes/entity/render-flags.md)
+  * [Move types](classes/entity/move-types.md)
 
 ## Libraries
 

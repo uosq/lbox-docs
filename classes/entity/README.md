@@ -7,8 +7,6 @@ description: >-
 
 # Entity
 
-
-
 ## Methods
 
 ### Generic
@@ -27,7 +25,9 @@ Example:
 
 ```lua
 local me = entities.GetLocalPlayer()
-if not me:IsValid() then print("localplayer is invalid!") end
+if not me:IsValid() then
+    print("localplayer is invalid!")
+end
 ```
 
 </details>
@@ -348,6 +348,138 @@ local me = entities.GetLocalPlayer()
 if not me then return end
 
 print(me:IsAlive())
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">EstimateAbsVelocity</mark></summary>
+
+Returns the estimated absolute velocity of the entity
+
+Return type: <mark style="color:yellow;">**Vector3**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+print("Your velocity is " .. me:EstimateAbsVelocity())
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">GetMoveType</mark></summary>
+
+Returns the move type of the entity
+
+Learn more about it [here](move-types.md)
+
+Return type: <mark style="color:yellow;">**integer**</mark>
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local movetype = me:GetMoveType()
+print(movetype)
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">HitboxSurroundingBox</mark></summary>
+
+Returns the hitbox surrounding box of the entity as table of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3) mins and maxs
+
+Return type: { \[1]: <mark style="color:red;">**Vector3**</mark>, \[2]: <mark style="color:red;">**Vector3**</mark> }
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local box = me:HitboxSurroundingBox()
+print(box)
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">EntitySpaceHitboxSurroundingBox</mark></summary>
+
+Returns the hitbox surrounding box of the entity in entity space as table of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3) mins and maxs
+
+Its relative, like <mark style="color:blue;">GetMins</mark> and <mark style="color:blue;">GetMaxs</mark>
+
+Return type: { \[1]: <mark style="color:red;">**Vector3**</mark>, \[2]: <mark style="color:red;">**Vector3**</mark> }
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local box = me:EntitySpaceHitboxSurroundingBox()
+print(box)
+```
+
+</details>
+
+<details>
+
+<summary><mark style="color:blue;">SetupBones</mark> ( boneMask: <mark style="color:red;"><strong>integer</strong></mark>?, currentTime: <mark style="color:red;">number</mark>? )</summary>
+
+Both boneMask and currentTime are optional, you can just do it without changing any of them
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local bones = me:SetupBones()
+for i, v in pairs (bones) do
+    print(i, v)
+end
+```
+
+</details>
+
+<details>
+
+<summary><del>GetHitboxes ( currentTime: <mark style="color:red;"><strong>number</strong></mark>? )</del> Deprecated: use SetupBones instead!</summary>
+
+currentTime can be nil or just dont change it
+
+Returns world-transformed hitboxes of the entity as table of tables, each containing 2 entries of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3): mins and maxs positions of each hitbox
+
+Example table
+
+| Hitbox Index | Mins & Maxs table                              |
+| ------------ | ---------------------------------------------- |
+| 1            | \[1]: Vector3(1, 2, 3), \[2]: Vector3(4, 5, 6) |
+| 2            | \[1]: Vector3(7, 8, 9), \[2]: Vector3(0, 1, 2) |
+
+Example:
+
+```lua
+local me = entities.GetLocalPlayer()
+if not me then return end
+
+local hitboxes = me:GetHitboxes()
+for i, v in pairs (hitboxes) do
+    print(i,v)
+end
 ```
 
 </details>
