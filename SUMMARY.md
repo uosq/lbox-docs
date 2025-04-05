@@ -6,6 +6,7 @@
 
 * [UserCmd](classes/usercmd/README.md)
   * [UserCmd Constants](classes/usercmd/usercmd-constants.md)
+* [Vector3](classes/vector3.md)
 * [Attribute Definition](classes/attribute-definition.md)
 * [BitBuffer](classes/bitbuffer.md)
 * [DrawModelContext](classes/drawmodelcontext.md)

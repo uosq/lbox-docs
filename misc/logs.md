@@ -24,10 +24,9 @@ DD/MM/YYYY format
 * Added [UserCmd Constants](../classes/usercmd/usercmd-constants.md) page
 * Added [callbacks](../libraries/callbacks.md) page
 * Added [aimbot](../libraries/aimbot.md) page
+* Added [Vector3](../classes/vector3.md) page
 
-
-
-* Edited [BitBuffer](../classes/bitbuffer.md) page
+- Edited [BitBuffer](../classes/bitbuffer.md) page
 
 </details>
 
