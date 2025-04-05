@@ -34,7 +34,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 <details>
 
-<summary><mark style="color:green;">Delete</mark></summary>
+<summary><mark style="color:green;">Delete</mark> ( )</summary>
 
 * You <mark style="color:yellow;">SHOULD</mark> use this after using the buffer (You dont want any memory leaks, do you?)
 
@@ -42,7 +42,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 <details>
 
-<summary><mark style="color:blue;">GetDataBitsLength</mark></summary>
+<summary><mark style="color:blue;">GetDataBitsLength</mark> ( )</summary>
 
 * Returns the length of the buffer in bits
 
@@ -54,7 +54,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 <details>
 
-<summary><mark style="color:blue;">GetDataBytesLength</mark></summary>
+<summary><mark style="color:blue;">GetDataBytesLength</mark> ( )</summary>
 
 * Returns the length of the buffer in bytes
 
@@ -66,7 +66,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 <details>
 
-<summary><mark style="color:blue;">Reset</mark></summary>
+<summary><mark style="color:blue;">Reset</mark> ( )</summary>
 
 * Resets the read position to the beginning of the buffer.
 
@@ -78,7 +78,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 <details>
 
-<summary><mark style="color:blue;">GetCurBit</mark></summary>
+<summary><mark style="color:blue;">GetCurBit</mark> ( )</summary>
 
 * Returns the current bit position
 
@@ -98,7 +98,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 <details>
 
-<summary><mark style="color:blue;">ReadByte</mark></summary>
+<summary><mark style="color:blue;">ReadByte</mark> ( )</summary>
 
 * Reads 1 byte from the buffer, which means its reading 8 bits of information
 
@@ -112,7 +112,7 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 <details>
 
-<summary><mark style="color:blue;">ReadBit</mark></summary>
+<summary><mark style="color:blue;">ReadBit</mark> ( )</summary>
 
 * Reads 1 bit from the buffer
 

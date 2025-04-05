@@ -17,7 +17,7 @@ Able to use with most entities
 
 <details>
 
-<summary><mark style="color:blue;">IsValid</mark></summary>
+<summary><mark style="color:blue;">IsValid</mark> ( )</summary>
 
 * Returns whether the entity is valid. This is done automatically and all other functions will return nil if the entity is invalid.
 
@@ -36,7 +36,7 @@ end
 
 <details>
 
-<summary><mark style="color:blue;">GetName</mark></summary>
+<summary><mark style="color:blue;">GetName</mark> ( )</summary>
 
 * Returns the name string of the entity if its a player
 
@@ -55,7 +55,7 @@ print(me:GetName())
 
 <details>
 
-<summary><mark style="color:blue;">GetClass</mark></summary>
+<summary><mark style="color:blue;">GetClass</mark> ( )</summary>
 
 * Returns the class of the entity
 
@@ -80,7 +80,7 @@ print(me:GetClass())
 
 <details>
 
-<summary><mark style="color:blue;">GetIndex</mark></summary>
+<summary><mark style="color:blue;">GetIndex</mark> ( )</summary>
 
 * Returns entity's index
 
@@ -99,7 +99,7 @@ print(me:GetIndex())
 
 <details>
 
-<summary><mark style="color:blue;">GetTeamNumber</mark></summary>
+<summary><mark style="color:blue;">GetTeamNumber</mark> ( )</summary>
 
 * Returns the entity's team number
 
@@ -123,7 +123,7 @@ print(text)
 
 <details>
 
-<summary><mark style="color:blue;">GetAbsOrigin</mark></summary>
+<summary><mark style="color:blue;">GetAbsOrigin</mark> ( )</summary>
 
 * Returns the absolute position of the entity
 
@@ -159,7 +159,7 @@ me:SetAbsOrigin(Vector3(200, 200, 200))
 
 <details>
 
-<summary><mark style="color:blue;">GetAbsAngles</mark></summary>
+<summary><mark style="color:blue;">GetAbsAngles</mark> ( )</summary>
 
 * Gets the absolute angles of the entity
 
@@ -211,7 +211,7 @@ callbacks.Register("FrameStageNotify", FrameStageNotify)
 
 <details>
 
-<summary><mark style="color:blue;">GetHealth</mark></summary>
+<summary><mark style="color:blue;">GetHealth</mark> ( )</summary>
 
 * Gets the health of the entity
 
@@ -231,7 +231,7 @@ print("Your health is " .. health)
 
 <details>
 
-<summary><mark style="color:blue;">GetMaxHealth</mark></summary>
+<summary><mark style="color:blue;">GetMaxHealth</mark> ( )</summary>
 
 * Gets the base MAX health of the entity (this is different from the MAX OVERHEALED health)
 
@@ -251,7 +251,7 @@ print("Your max health is " .. maxhealth)
 
 <details>
 
-<summary><mark style="color:blue;">GetMins</mark></summary>
+<summary><mark style="color:blue;">GetMins</mark> ( )</summary>
 
 * This returns the mins of the entity
 
@@ -275,7 +275,7 @@ print(pos)
 
 <details>
 
-<summary><mark style="color:blue;">GetMaxs</mark></summary>
+<summary><mark style="color:blue;">GetMaxs</mark> ( )</summary>
 
 * This returns the maxs of the entity
 
@@ -299,7 +299,7 @@ print(pos)
 
 <details>
 
-<summary><mark style="color:blue;">IsPlayer</mark></summary>
+<summary><mark style="color:blue;">IsPlayer</mark> ( )</summary>
 
 * Returns true if the entity is a player, or false if not
 
@@ -318,7 +318,7 @@ print(me:IsPlayer()) --- yes
 
 <details>
 
-<summary><mark style="color:blue;">IsWeapon</mark></summary>
+<summary><mark style="color:blue;">IsWeapon</mark> ( )</summary>
 
 * Returns true if the entity is a weapon, and false if not
 
@@ -337,7 +337,7 @@ print(me:IsWeapon())
 
 <details>
 
-<summary><mark style="color:blue;">IsAlive</mark></summary>
+<summary><mark style="color:blue;">IsAlive</mark> ( )</summary>
 
 * Returns true if the entity is alive
 
@@ -356,7 +356,7 @@ print(me:IsAlive())
 
 <details>
 
-<summary><mark style="color:blue;">EstimateAbsVelocity</mark></summary>
+<summary><mark style="color:blue;">EstimateAbsVelocity</mark> ( )</summary>
 
 * Returns the estimated absolute velocity of the entity
 
@@ -375,7 +375,7 @@ print("Your velocity is " .. me:EstimateAbsVelocity())
 
 <details>
 
-<summary><mark style="color:blue;">GetMoveType</mark></summary>
+<summary><mark style="color:blue;">GetMoveType</mark> ( )</summary>
 
 * Returns the move type of the entity
 
@@ -397,7 +397,7 @@ print(movetype)
 
 <details>
 
-<summary><mark style="color:blue;">HitboxSurroundingBox</mark></summary>
+<summary><mark style="color:blue;">HitboxSurroundingBox</mark> ( )</summary>
 
 * Returns the hitbox surrounding box of the entity as table of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3) mins and maxs
 
@@ -417,7 +417,7 @@ print(box)
 
 <details>
 
-<summary><mark style="color:blue;">EntitySpaceHitboxSurroundingBox</mark></summary>
+<summary><mark style="color:blue;">EntitySpaceHitboxSurroundingBox</mark> ( )</summary>
 
 * Returns the hitbox surrounding box of the entity in entity space as table of [Vector3](https://lmaobox.net/lua/Lua_Classes/Vector3) mins and maxs
 
@@ -492,7 +492,7 @@ These are only available for Player entities (class CTFPlayer)
 
 <details>
 
-<summary><mark style="color:blue;">GetMaxBuffedHealth</mark></summary>
+<summary><mark style="color:blue;">GetMaxBuffedHealth</mark> ( )</summary>
 
 * Gets the max health a overhealed player can have, for example heavy will be 450
 
@@ -516,7 +516,7 @@ These are usually entities attached to another entity, for example cosmetics fro
 
 <details>
 
-<summary><mark style="color:blue;">GetMoveChild</mark></summary>
+<summary><mark style="color:blue;">GetMoveChild</mark> ( )</summary>
 
 * Returns the first entity attached to the entity
 
@@ -526,7 +526,7 @@ These are usually entities attached to another entity, for example cosmetics fro
 
 <details>
 
-<summary><mark style="color:blue;">GetMovePeer</mark></summary>
+<summary><mark style="color:blue;">GetMovePeer</mark> ( )</summary>
 
 * Returns the next entity attached to the entity
 

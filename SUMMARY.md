@@ -4,6 +4,8 @@
 
 ## Classes
 
+* [UserCmd](classes/usercmd/README.md)
+  * [UserCmd Constants](classes/usercmd/usercmd-constants.md)
 * [Attribute Definition](classes/attribute-definition.md)
 * [BitBuffer](classes/bitbuffer.md)
 * [DrawModelContext](classes/drawmodelcontext.md)
@@ -18,3 +20,5 @@
 ## Libraries
 
 * [http](libraries/http.md)
+* [aimbot](libraries/aimbot.md)
+* [callbacks](libraries/callbacks.md)

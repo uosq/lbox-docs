@@ -8,7 +8,7 @@ description: Has information on the desired attribute
 
 <details>
 
-<summary><mark style="color:blue;">GetName</mark></summary>
+<summary><mark style="color:blue;">GetName</mark> ( )</summary>
 
 * Returns the name
 * Return type: <mark style="color:yellow;">**string**</mark>
@@ -17,7 +17,7 @@ description: Has information on the desired attribute
 
 <details>
 
-<summary><mark style="color:blue;">GetID</mark></summary>
+<summary><mark style="color:blue;">GetID</mark> ( )</summary>
 
 * Returns the ID of the attribute
 * Return type: <mark style="color:yellow;">**integer**</mark>
@@ -26,7 +26,7 @@ description: Has information on the desired attribute
 
 <details>
 
-<summary><mark style="color:blue;">IsStoredAsInteger</mark></summary>
+<summary><mark style="color:blue;">IsStoredAsInteger</mark> ( )</summary>
 
 * Returns true if the attribute is stored as an integer. For numeric attibutes, false means it is stored as a float.
 * Return type: <mark style="color:yellow;">**boolean**</mark>

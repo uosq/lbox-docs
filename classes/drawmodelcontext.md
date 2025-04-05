@@ -14,7 +14,7 @@ Methods that you can use with basically any DrawModel callback
 
 <details>
 
-<summary><mark style="color:blue;">Execute</mark></summary>
+<summary><mark style="color:blue;">Execute</mark> ( )</summary>
 
 * Draw the model immediately in the current state. Can be called multiple times
 
@@ -50,7 +50,7 @@ callbacks.Register("DrawModel", DrawModel)
 
 <details>
 
-<summary><mark style="color:blue;">DrawExtraPass</mark></summary>
+<summary><mark style="color:blue;">DrawExtraPass</mark> ( )</summary>
 
 * Basically Execute() with another name, just use Execute() instead
 
@@ -58,7 +58,7 @@ callbacks.Register("DrawModel", DrawModel)
 
 <details>
 
-<summary><mark style="color:blue;">GetModelName</mark></summary>
+<summary><mark style="color:blue;">GetModelName</mark> ( )</summary>
 
 * Gets the model's name
 
@@ -82,7 +82,7 @@ callbacks.Register("DrawModel", DrawModel)
 
 <details>
 
-<summary><mark style="color:blue;">GetEntity</mark></summary>
+<summary><mark style="color:blue;">GetEntity</mark> ( )</summary>
 
 * Gets the entity linked with the drawn model
 
@@ -184,7 +184,7 @@ Methods that might do something when Lmaobox is doing something
 
 <details>
 
-<summary><mark style="color:blue;">IsDrawingAntiAim</mark></summary>
+<summary><mark style="color:blue;">IsDrawingAntiAim</mark> ( )</summary>
 
 * Returns true when Lmaobox is drawing the Anti Aim indicator in this DrawModel callback
 
@@ -208,7 +208,7 @@ callbacks.Register("DrawModel", DrawModel)
 
 <details>
 
-<summary><mark style="color:blue;">IsDrawingBackTrack</mark></summary>
+<summary><mark style="color:blue;">IsDrawingBackTrack</mark> ( )</summary>
 
 * Returns true when Lmaobox is drawing the Backtrack indicator in this DrawModel callback
 
@@ -232,7 +232,7 @@ callbacks.Register("DrawModel", DrawModel)
 
 <details>
 
-<summary><mark style="color:blue;">IsDrawingGlow</mark></summary>
+<summary><mark style="color:blue;">IsDrawingGlow</mark> ( )</summary>
 
 * Returns true when Lmaobox is drawing the Glow indicator in this DrawModel callback
 

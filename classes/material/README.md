@@ -10,7 +10,7 @@ For more information, see how [VMT files are made](https://developer.valvesoftwa
 
 <details>
 
-<summary><mark style="color:blue;">GetName</mark></summary>
+<summary><mark style="color:blue;">GetName</mark> ( )</summary>
 
 * Returns the material name
 
@@ -28,7 +28,7 @@ print(name)
 
 <details>
 
-<summary><mark style="color:blue;">GetTextureGroupName</mark></summary>
+<summary><mark style="color:blue;">GetTextureGroupName</mark> ( )</summary>
 
 * Returns group the material is part of
 
