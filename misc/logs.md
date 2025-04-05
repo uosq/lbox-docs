@@ -29,14 +29,6 @@ DD/MM/YYYY format
 
 <details>
 
-<summary>04/04/2025</summary>
-
-Undocumented
-
-</details>
-
-<details>
-
 <summary>03/04/2025</summary>
 
 * Added [Atribute Definition](../classes/attribute-definition.md) page
