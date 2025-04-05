@@ -25,6 +25,10 @@ DD/MM/YYYY format
 * Added [callbacks](../libraries/callbacks.md) page
 * Added [aimbot](../libraries/aimbot.md) page
 
+
+
+* Edited [BitBuffer](../classes/bitbuffer.md) page
+
 </details>
 
 <details>
