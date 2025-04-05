@@ -80,15 +80,14 @@ Same thing as just changing the field [viewangles](./#viewangles)
 
 Example:
 
-```lua
-local function RandomViewAngles(cmd)
-    cmd:SetViewAngles(engine.RandomFloat(-89, 89), engine.RandomFloat(-180, 180), engine.RandomFloat(0, 90))
-    --- both do the same thing
-    --- cmd.viewangles = Vector3(engine.RandomFloat(-89, 89), engine.RandomFloat(-180, 180), engine.RandomFloat(0, 90))
-end
+<pre class="language-lua"><code class="lang-lua">local function RandomViewAngles(cmd)
+<strong>    cmd:SetViewAngles(engine.RandomFloat(-89, 89), engine.RandomFloat(-180, 180), engine.RandomFloat(0, 90))
+</strong>    --- both do the same thing
+<strong>    --- cmd.viewangles = Vector3(engine.RandomFloat(-89, 89), engine.RandomFloat(-180, 180), engine.RandomFloat(0, 90))
+</strong>end
 
 callbacks.Register("CreateMove", RandomViewAngles)
-```
+</code></pre>
 
 </details>
 
@@ -116,18 +115,17 @@ Changes wether the packet will be sent to the server or choked
 
 Example:
 
-```lua
-local MAX_CHOKED_COMMANDS = 21
+<pre class="language-lua"><code class="lang-lua">local MAX_CHOKED_COMMANDS = 21
 local function ChokePacket(cmd)
-    if clientstate:GetChokedCommands() < MAX_CHOKED_COMMANDS then
-        cmd:SetSendPacket(false)
-        --- same thing as this v
-        --- cmd.sendpacket = false
-    end
+    if clientstate:GetChokedCommands() &#x3C; MAX_CHOKED_COMMANDS then
+<strong>        cmd:SetSendPacket(false)
+</strong>        --- same thing as this v
+<strong>        --- cmd.sendpacket = false
+</strong>    end
 end
 
 callbacks.Register("CreateMove", ChokePacket)
-```
+</code></pre>
 
 </details>
 
@@ -143,14 +141,13 @@ Same thing as [cmd.buttons](./#buttons)
 
 Example:
 
-```lua
-local function PreventShooting(cmd)
+<pre class="language-lua"><code class="lang-lua">local function PreventShooting(cmd)
     local buttons = cmd:GetButtons()
-    cmd:SetButtons(buttons & ~IN_ATTACK)
-end
+<strong>    cmd:SetButtons(buttons &#x26; ~IN_ATTACK)
+</strong>end
 
 callbacks.Register("CreateMove", PreventShooting)
-```
+</code></pre>
 
 </details>
 
@@ -178,13 +175,12 @@ Same thing as [cmd.forwardmove](./#forwardmove)
 
 Example:
 
-```lua
-local function PreventForward(cmd)
-    cmd:SetForwardMove(0)
-end
+<pre class="language-lua"><code class="lang-lua">local function PreventForward(cmd)
+<strong>    cmd:SetForwardMove(0)
+</strong>end
 
 callbacks.Register("CreateMove", PreventForward)
-```
+</code></pre>
 
 </details>
 
@@ -212,13 +208,12 @@ Same thing as [cmd.sidemove](./#sidemove)
 
 Example:
 
-```lua
-local function PreventSideMovement(cmd)
-    cmd:SetSideMove(0)
-end
+<pre class="language-lua"><code class="lang-lua">local function PreventSideMovement(cmd)
+<strong>    cmd:SetSideMove(0)
+</strong>end
 
 callbacks.Register("CreateMove", PreventSideMovement)
-```
+</code></pre>
 
 </details>
 
@@ -246,13 +241,12 @@ Same thing as [cmd.upmove](./#upmove)
 
 Example:
 
-```lua
-local function PreventUpMovement(cmd)
-    cmd:SetUpMove(0)
-end
+<pre class="language-lua"><code class="lang-lua">local function PreventUpMovement(cmd)
+<strong>    cmd:SetUpMove(0)
+</strong>end
 
 callbacks.Register("CreateMove", PreventUpMovement)
-```
+</code></pre>
 
 </details>
 

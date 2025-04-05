@@ -20,20 +20,17 @@ Useful for processing & changing input and movement
 
 Example:
 
-```lua
-local function IsShooting(cmd)
-    if (cmd.buttons & IN_ATTACK) ~= 0 then
+<pre class="language-lua"><code class="lang-lua">local function IsShooting(cmd)
+    if (cmd.buttons &#x26; IN_ATTACK) ~= 0 then
         --- local player is shooting
         --- do something :3
     end
 end
 
-callbacks.Register("CreateMove", IsShooting)
-```
+<strong>callbacks.Register("CreateMove", IsShooting)
+</strong></code></pre>
 
 </details>
-
-
 
 ## Methods
 
@@ -43,21 +40,18 @@ callbacks.Register("CreateMove", IsShooting)
 
 <summary>Register ( id: <mark style="color:yellow;"><strong>string</strong></mark>, name: <mark style="color:yellow;"><strong>string</strong></mark>, func: <mark style="color:yellow;"><strong>function</strong></mark> )</summary>
 
-You can use this to register a function (`func`) that gets called when a certain callback (`id`) runs
+* You can use this to register a function (`func`) that gets called when a certain callback (`id`) runs
 
-The <mark style="color:green;">name</mark> parameter is a unique identifier so you can stop a registered function to stop at any time
+- The <mark style="color:green;">name</mark> parameter is a unique identifier so you can stop a registered function to stop at any time
 
 Example:
 
-{% code title="Print hi on Draw callback" %}
-```lua
-local function PrintHi()
+<pre class="language-lua" data-title="Print hi on Draw callback"><code class="lang-lua">local function PrintHi()
     print("hi mom!")
 end
 
-callbacks.Register("Draw", "hi dad", PrintHi)
-```
-{% endcode %}
+<strong>callbacks.Register("Draw", "hi dad", PrintHi)
+</strong></code></pre>
 
 </details>
 
@@ -65,17 +59,16 @@ callbacks.Register("Draw", "hi dad", PrintHi)
 
 <summary>Register ( id: <mark style="color:yellow;"><strong>string</strong></mark>, func: <mark style="color:yellow;"><strong>function</strong></mark> )</summary>
 
-You can use this to register a function (`func`) that gets called when a certain callback (`id`) runs
+* You can use this to register a function (`func`) that gets called when a certain callback (`id`) runs
 
 Example:
 
-```lua
-local function PrintHi()
+<pre class="language-lua"><code class="lang-lua">local function PrintHi()
     print("hi mom!")
 end
 
-callbacks.Register("Draw", PrintHi)
-```
+<strong>callbacks.Register("Draw", PrintHi)
+</strong></code></pre>
 
 </details>
 
@@ -85,7 +78,7 @@ callbacks.Register("Draw", PrintHi)
 
 <summary>Unregister ( id: <mark style="color:yellow;"><strong>string</strong></mark>, name: <mark style="color:yellow;"><strong>string</strong></mark> )</summary>
 
-Stops a registered callback id (<mark style="color:green;">**name**</mark>) from running
+* Stops a registered callback id (<mark style="color:green;">**name**</mark>) from running
 
 Example:
 
@@ -94,6 +87,3 @@ callbacks.Unregister("Draw", "hi dad")
 ```
 
 </details>
-
-
-

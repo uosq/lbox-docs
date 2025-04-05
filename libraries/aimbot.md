@@ -6,6 +6,8 @@ description: This can be used to interact with Lmaobox's aimbot
 
 ## Methods
 
+### GetAimbotTarget
+
 <details>
 
 <summary><mark style="color:blue;">GetAimbotTarget</mark></summary>
@@ -18,11 +20,9 @@ Return type: <mark style="color:yellow;">**integer**</mark>
 
 Example:
 
-{% code title="Print target's name" overflow="wrap" %}
-```lua
-local function CreateMove(cmd)
-    local target = aimbot.GetAimbotTarget() --- returns -1 if not running or no target
-
+<pre class="language-lua" data-title="Print target&#x27;s name" data-overflow="wrap"><code class="lang-lua">local function CreateMove(cmd)
+<strong>    local target = aimbot.GetAimbotTarget() --- returns -1 if not running or no target
+</strong>
     --- world entity's index is 0, so we can skip it
     if target > 0 then
         local entity = entities.GetByIndex(target)
@@ -33,8 +33,6 @@ local function CreateMove(cmd)
 end
 
 callbacks.Register("CreateMove", CreateMove)
-```
-{% endcode %}
+</code></pre>
 
 </details>
-

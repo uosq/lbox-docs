@@ -8,7 +8,7 @@ description: >-
 
 This is useful to manipulate data sent to the server, for example spoofing convars (console variables)  values like sv\_cheats to their default instead of whatever we have
 
-### Constructor
+## Constructor
 
 ```lua
 BitBuffer()
@@ -30,7 +30,9 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 ```
 {% endcode %}
 
-### Methods
+## Methods
+
+### Delete
 
 <details>
 
@@ -39,6 +41,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 * You <mark style="color:yellow;">SHOULD</mark> use this after using the buffer (You dont want any memory leaks, do you?)
 
 </details>
+
+### GetDataBitsLength
 
 <details>
 
@@ -52,6 +56,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 </details>
 
+### GetDataBytesLength
+
 <details>
 
 <summary><mark style="color:blue;">GetDataBytesLength</mark> ( )</summary>
@@ -63,6 +69,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 * Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
+
+### Reset
 
 <details>
 
@@ -76,6 +84,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 </details>
 
+### GetCurBit
+
 <details>
 
 <summary><mark style="color:blue;">GetCurBit</mark> ( )</summary>
@@ -86,6 +96,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 </details>
 
+### SetCurBit
+
 <details>
 
 <summary><mark style="color:blue;">SetCurBit</mark> ( position: <mark style="color:red;"><strong>integer</strong></mark> )</summary>
@@ -94,7 +106,9 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 </details>
 
-### Read Methods
+## Read Methods
+
+### ReadByte
 
 <details>
 
@@ -110,6 +124,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 </details>
 
+### ReadBit
+
 <details>
 
 <summary><mark style="color:blue;">ReadBit</mark> ( )</summary>
@@ -121,6 +137,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 * Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
+
+### ReadFloat
 
 <details>
 
@@ -134,6 +152,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 </details>
 
+### ReadInt
+
 <details>
 
 <summary><mark style="color:blue;">ReadInt</mark> ( bitLength: <mark style="color:red;"><strong>integer</strong></mark> )</summary>
@@ -145,6 +165,8 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 * Return type: <mark style="color:yellow;">**integer**</mark>
 
 </details>
+
+### ReadString
 
 <details>
 
@@ -158,9 +180,11 @@ buffer:Delete() -- !!!! DELETE THE BUFFER !!!!
 
 </details>
 
-### Write Methods
+## Write Methods
 
 Be careful to **NOT** overflow the buffer
+
+### WriteByte
 
 <details>
 
@@ -170,6 +194,8 @@ Be careful to **NOT** overflow the buffer
 
 </details>
 
+### WriteInt
+
 <details>
 
 <summary><mark style="color:blue;">WriteInt</mark> ( value: <mark style="color:red;"><strong>number</strong></mark> )</summary>
@@ -177,6 +203,8 @@ Be careful to **NOT** overflow the buffer
 * Writes 1 integer to the buffer in the current bit position
 
 </details>
+
+### WriteFloat
 
 <details>
 
@@ -186,6 +214,8 @@ Be careful to **NOT** overflow the buffer
 
 </details>
 
+### WriteString
+
 <details>
 
 <summary><mark style="color:blue;">WriteString</mark> ( text: <mark style="color:red;"><strong>string</strong></mark> )</summary>
@@ -194,7 +224,7 @@ Be careful to **NOT** overflow the buffer
 
 </details>
 
-### Examples
+## Examples
 
 {% code title="Changing clc_Move msg" %}
 ```lua

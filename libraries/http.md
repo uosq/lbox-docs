@@ -14,10 +14,9 @@ description: Http library
 
 Example:
 
-```lua
-local fact = http.Get("https://catfact.ninja/fact")
-print(fact)
-```
+<pre class="language-lua"><code class="lang-lua"><strong>local fact = http.Get("https://catfact.ninja/fact")
+</strong>print(fact)
+</code></pre>
 
 </details>
 
@@ -33,13 +32,11 @@ print(fact)
 
 Example:
 
-```lua
-local function print_fact(fact)
+<pre class="language-lua"><code class="lang-lua">local function print_fact(fact)
     print(fact)
 end
 
-http.GetAsync("https://catfact.ninja/fact", print_fact)
-```
+<strong>http.GetAsync("https://catfact.ninja/fact", print_fact)
+</strong></code></pre>
 
 </details>
-
