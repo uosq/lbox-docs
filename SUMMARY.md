@@ -22,3 +22,7 @@
 * [http](libraries/http.md)
 * [aimbot](libraries/aimbot.md)
 * [callbacks](libraries/callbacks.md)
+
+## Misc
+
+* [Logs](misc/logs.md)
