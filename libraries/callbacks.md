@@ -6,7 +6,7 @@ description: >-
 
 # callbacks
 
-## Callbacks
+## sCallbacks
 
 They aren't functions, all the callback's parameters are passed to the actual function that you register
 
@@ -29,6 +29,155 @@ end
 
 <strong>callbacks.Register("CreateMove", IsShooting)
 </strong></code></pre>
+
+</details>
+
+<details>
+
+<summary>Draw ( )</summary>
+
+Useful for drawing stuff to the screen
+
+You might want to check the draw library
+
+Example:
+
+<pre class="language-lua"><code class="lang-lua">local font = draw.CreateFont("TF2 BUILD", 12, 1000)
+
+local function DrawText()
+    local x, y = 50, 20
+    draw.SetFont(font)
+    draw.Color(255, 255, 255, 255)
+    draw.TextShadow(x, y, "hi mom!")
+end
+
+<strong>callbacks.Register("Draw", DrawText)
+</strong></code></pre>
+
+</details>
+
+<details>
+
+<summary>DrawModel ( context: <a href="../classes/drawmodelcontext.md"><mark style="color:purple;"><strong>DrawModelContext</strong></mark></a> )</summary>
+
+Useful to change how the models are drawn
+
+Example:
+
+```lua
+local function MakeModelsRed(context)
+    local entity = context:GetEntity()
+    if not entity or not entity:IsPlayer() then return end
+    
+    context:SetColorModulation(1, 0, 0)
+end
+
+callbacks.Register("DrawModel", MakeModelsRed)
+```
+
+</details>
+
+<details>
+
+<summary>DrawStaticProps ( info: <a data-footnote-ref href="#user-content-fn-1"><mark style="color:purple;"><strong>StaticPropRenderInfo</strong></mark></a> )</summary>
+
+This is useful to change how static props look
+
+Although we have exactly only half the functions working (there are only 2 of them)
+
+And the other half that works, im not sure if it really works :p
+
+Example:
+
+<pre class="language-lua"><code class="lang-lua">local function MakePropsBlue(info)
+    info:StudioSetColorModulation(1, 0, 0)
+end
+
+<strong>callbacks.Register("DrawStaticProps", MakePropsBlue)
+</strong></code></pre>
+
+</details>
+
+<details>
+
+<summary>FireGameEvent ( event: <a data-footnote-ref href="#user-content-fn-2"><mark style="color:purple;"><strong>GameEvent</strong></mark></a> )</summary>
+
+Useful to react to certain events in the game, like a player's death for example
+
+You might want to take a look at the [Game Events](https://wiki.alliedmods.net/Team_Fortress_2_Events) page
+
+Example:
+
+```lua
+local function PlayerDeath(event)
+    if event:GetName() == "player_death" then
+        local victim_index = event:GetInt("victim_entindex")
+        local victim = entities.GetByIndex(victim_index)
+        if not victim then return end
+        
+        print(victim:GetName() .. " has died")
+    end
+end
+
+callbacks.Register("FireGameEvent", PlayerDeath)
+```
+
+</details>
+
+<details>
+
+<summary>DispatchUserMessage ( msg: <a data-footnote-ref href="#user-content-fn-2"><mark style="color:purple;"><strong>UserMessage</strong></mark></a> )</summary>
+
+It's useful for buying stuff in MvM and other things :p&#x20;
+
+To find user messages, I recommend looking at the TF2's source code
+
+Example:
+
+{% code title="Example from official docs" fullWidth="false" %}
+```lua
+--- source: https://lmaobox.net/lua/Lua_Classes/UserMessage/#example
+local function myCoolMessageHook(msg)
+
+    if msg:GetID() == SayText2 then 
+        local bf = msg:GetBitBuffer()
+
+        bf:SetCurBit(8)-- skip 1 byte of not useful data
+
+        local chatType = bf:ReadString(256)
+        local playerName = bf:ReadString(256)
+        local message = bf:ReadString(256)
+
+        print("Player " .. playerName .. " said " .. message)
+    end
+
+end
+
+callbacks.Register("DispatchUserMessage", myCoolMessageHook)
+```
+{% endcode %}
+
+</details>
+
+<details>
+
+<summary>SendStringCmd ( cmd: <a data-footnote-ref href="#user-content-fn-3"><mark style="color:purple;"><strong>StringCmd</strong></mark></a> )</summary>
+
+Called when console command is sent to server, like for example when using chat it'll pass the message to the cmd parameter
+
+Example:
+
+```lua
+local function PrintMessages(cmd)
+    local text = cmd:Get()
+    if string.find(text, 'say "') then
+        print(text)
+        cmd:Set("echo hi mom!") --- change the command from for example, 'say "hi dad"' to "echo hi mom!"
+    end
+end
+
+callbacks.Register("SendStringCmd", PrintMessages)
+```
 
 </details>
 
@@ -87,3 +236,9 @@ callbacks.Unregister("Draw", "hi dad")
 ```
 
 </details>
+
+[^1]: <mark style="color:purple;">**I have to add this class later**</mark>
+
+[^2]: I didn't make the class page yet
+
+[^3]: <mark style="color:purple;">**Class page still not made**</mark>
