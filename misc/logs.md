@@ -18,6 +18,14 @@ DD/MM/YYYY format
 
 <details>
 
+<summary>07/04/2025</summary>
+
+* Edited [callbacks](../libraries/callbacks.md) page
+
+</details>
+
+<details>
+
 <summary>06/04/2025</summary>
 
 * Edited [callbacks](../libraries/callbacks.md) page

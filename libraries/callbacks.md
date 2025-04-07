@@ -6,7 +6,7 @@ description: >-
 
 # callbacks
 
-## sCallbacks
+## Callbacks
 
 They aren't functions, all the callback's parameters are passed to the actual function that you register
 
@@ -134,9 +134,7 @@ To find user messages, I recommend looking at the TF2's source code
 
 Example:
 
-{% code title="Example from official docs" fullWidth="false" %}
-```lua
---- source: https://lmaobox.net/lua/Lua_Classes/UserMessage/#example
+<pre class="language-lua" data-title="Example from official docs" data-full-width="false"><code class="lang-lua">--- source: https://lmaobox.net/lua/Lua_Classes/UserMessage/#example
 local function myCoolMessageHook(msg)
 
     if msg:GetID() == SayText2 then 
@@ -153,9 +151,8 @@ local function myCoolMessageHook(msg)
 
 end
 
-callbacks.Register("DispatchUserMessage", myCoolMessageHook)
-```
-{% endcode %}
+<strong>callbacks.Register("DispatchUserMessage", myCoolMessageHook)
+</strong></code></pre>
 
 </details>
 
@@ -177,6 +174,114 @@ local function PrintMessages(cmd)
 end
 
 callbacks.Register("SendStringCmd", PrintMessages)
+```
+
+</details>
+
+<details>
+
+<summary>FrameStageNotify ( stage: <a data-footnote-ref href="#user-content-fn-4"><mark style="color:purple;"><strong>E_ClientFrameStage</strong></mark></a> )</summary>
+
+This gets called when when rendering starts/ends, when starting/nding to receive a network update, etc.
+
+Used to be PostPropUpdate but its deprecated, so use `stage == E_ClientFrameStage.NETWORK_UPDATE_START`  if you want the same thing
+
+Example:
+
+```lua
+local position = nil
+
+local function GetLocalPlayerPosition()
+    local player = entities.GetLocalPlayer()
+    if not player then position = nil return end
+    
+    position = player:GetAbsOrigin()
+    print("The new localplayer position is " .. tostring(position))
+end
+
+local function FrameStageNotify(stage)
+    if stage == E_ClientFrameStage.NETWORK_UPDATE_START then
+        GetLocalPlayerPosition()
+    end
+end
+
+callbacks.Register("FrameStageNotify", FrameStageNotify)
+```
+
+</details>
+
+<details>
+
+<summary>RenderView ( setup: <a data-footnote-ref href="#user-content-fn-5"><mark style="color:purple;"><strong>ViewSetup</strong></mark></a> )</summary>
+
+This is called before the view of the local player is rendered
+
+Its used to change your fov, angles, etc
+
+Example:
+
+```lua
+local function ChangeFOV(setup)
+    setup.fov = 120
+end
+
+callbacks.Register("RenderView", ChangeFOV)
+```
+
+</details>
+
+<details>
+
+<summary>PostRenderView ( setup: <a data-footnote-ref href="#user-content-fn-5"><mark style="color:purple;"><strong>ViewSetup</strong></mark></a></summary>
+
+This is called after the view of the local player is rendered
+
+Its used to make custom cameras
+
+Example:
+
+{% code title="Example from official doc" %}
+```lua
+--- source: https://lmaobox.net/lua/Lua_Libraries/render/#examples
+local camW = 400
+local camH = 300
+local cameraTexture = materials.CreateTextureRenderTarget( "cameraTexture123", camW, camH )
+local cameraMaterial = materials.Create( "cameraMaterial123", [[
+    UnlitGeneric
+    {
+        $basetexture    "cameraTexture123"
+    }
+]] )
+
+callbacks.Register("PostRenderView", function(view)
+    customView = view
+    customView.angles = EulerAngles(customView.angles.x, customView.angles.y + 180, customView.angles.z)
+
+    render.Push3DView( customView, E_ClearFlags.VIEW_CLEAR_COLOR | E_ClearFlags.VIEW_CLEAR_DEPTH, cameraTexture )
+    render.ViewDrawScene( true, true, customView )
+    render.PopView()
+    render.DrawScreenSpaceRectangle( cameraMaterial, 300, 300, camW, camH, 0, 0, camW, camH, camW, camH )
+end)
+```
+{% endcode %}
+
+</details>
+
+<details>
+
+<summary>ServerCmdKeyValues ( keyvalues: <a data-footnote-ref href="#user-content-fn-6"><mark style="color:purple;"><strong>StringCmd</strong></mark></a> )</summary>
+
+Called when the client sends a keyvalues message to the server. Keyvalues are a way of sending data to the server, and are used for many things, such as sending MVM Upgrades, using items, and more
+
+Example:
+
+```lua
+local function ServerCmdKeyValues(keyvalues)
+    local text = keyvalues:Get()
+    print(text)
+end
+
+callbacks.Register("ServerCmdKeyValues", ServerCmdKeyValues)
 ```
 
 </details>
@@ -242,3 +347,9 @@ callbacks.Unregister("Draw", "hi dad")
 [^2]: I didn't make the class page yet
 
 [^3]: <mark style="color:purple;">**Class page still not made**</mark>
+
+[^4]: I still need to make this page
+
+[^5]: Still have to make this page
+
+[^6]: Gotta make the page
