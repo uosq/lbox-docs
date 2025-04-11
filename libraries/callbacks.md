@@ -14,6 +14,32 @@ Callbacks can be called in different situations, for example CreateMove gets cal
 
 <details>
 
+<summary>Unload ( )</summary>
+
+This is called when the script is being unloaded, either by the lmaobox menu or by another script
+
+Called before actually being unloaded, so you can still use your variables
+
+Example:
+
+```lua
+local junkvar1 = 1239842389047
+local junkvar2 = 12842389174
+
+local function Unload()
+    print("Script is being unloaded!")
+    junkvar1 = nil
+    junkvar2 = nil
+    collectgarbage("collect")
+end
+
+callbacks.Register("Unload", Unload)
+```
+
+</details>
+
+<details>
+
 <summary>CreateMove ( cmd: <a href="../classes/usercmd/"><mark style="color:purple;"><strong>UserCmd</strong></mark></a> )</summary>
 
 Useful for processing & changing input and movement
@@ -232,7 +258,7 @@ callbacks.Register("RenderView", ChangeFOV)
 
 <details>
 
-<summary>PostRenderView ( setup: <a data-footnote-ref href="#user-content-fn-5"><mark style="color:purple;"><strong>ViewSetup</strong></mark></a></summary>
+<summary>PostRenderView ( setup: <a data-footnote-ref href="#user-content-fn-5"><mark style="color:purple;"><strong>ViewSetup</strong></mark></a> )</summary>
 
 This is called after the view of the local player is rendered
 
@@ -285,6 +311,161 @@ callbacks.Register("ServerCmdKeyValues", ServerCmdKeyValues)
 ```
 
 </details>
+
+<details>
+
+<summary>OnFakeUncrate ( crate: <a data-footnote-ref href="#user-content-fn-7"><mark style="color:purple;"><strong>Item</strong></mark></a>, crateLootList: <mark style="color:purple;"><strong>table</strong></mark> )</summary>
+
+Honestly everything in this specific callback was taken from the official lua doc, I have never used this one
+
+Called when a fake crate is to be uncrated. This is called before the crate is actually uncrated. You can return a table of items that will be shown as uncrated. The loot list is useful as a reference for what items can be uncrated in this crate, but you can create any items you want.
+
+Example:
+
+{% code title="Example from official lua doc" %}
+```lua
+--- source: https://lmaobox.net/lua/Lua_Callbacks/#examples
+
+--- OnFakeUncrate gets called when user is unboxing a fake crate with a fake key, 
+--- both could be created by our skinchanger and via CreateFakeItem method
+callbacks.Register( "OnFakeUncrate", "abcd", function( itemCrate, lootTable )
+    print( "OnFakeUncrate" )
+    print( "itemCrate Name: " .. itemCrate:GetName() )
+
+    for i = 1, #lootTable do
+        print( "lootTable[" .. i .. "] Name: " .. lootTable[i]:GetName() )
+    end
+
+    return lootTable
+end )
+
+--- modify unboxing to always unbox rainbow flamethrower (15090)
+callbacks.Register( "OnFakeUncrate", "abcd", function( itemCrate, lootTable )
+    print( "OnFakeUncrate crate: " .. itemCrate:GetName() )
+
+    local myLootTable = {}
+    myLootTable[1] = itemschema.GetItemDefinitionByID(15090)
+
+    return myLootTable
+end )
+```
+{% endcode %}
+
+</details>
+
+<details>
+
+<summary>OnLobbyUpdated ( lobby: <a data-footnote-ref href="#user-content-fn-8"><mark style="color:purple;"><strong>GameServerLobby</strong></mark></a> )</summary>
+
+Called when the lobby is found or updated
+
+Is called before deciding if you're gonna join the game or not, so you can decide for the game :)
+
+Example:
+
+```lua
+---@param lobby GameServerLobby
+local function OnLobbyUpdated(lobby)
+   for i, member in pairs (lobby:GetMembers()) do
+      print(member:GetName() .. " " .. member:GetSteamID())
+   end
+end
+
+callbacks.Register("OnLobbyUpdated", OnLobbyUpdated)
+```
+
+</details>
+
+<details>
+
+<summary>SetRichPresence ( key: <mark style="color:purple;"><strong>string</strong></mark>, value: <mark style="color:purple;"><strong>string</strong></mark> )</summary>
+
+This is **NOT** discord rich presence, its for steam friend list!
+
+Allows you to change the rich presence in the friend list
+
+{% code overflow="wrap" %}
+```lua
+--- this changes the state to casual, so even if we're on a community server it will look like we're playing a casual match :)
+
+---@param key string
+---@param value string?
+---@return string?
+local function SetRichPresence(key, value)
+   if key == "state" then
+      return "PlayingCasual"
+   end
+
+   return nil
+end
+
+callbacks.Register("SetRichPresence", SetRichPresence)
+```
+{% endcode %}
+
+</details>
+
+<details>
+
+<summary>SendNetMsg ( msg: <a data-footnote-ref href="#user-content-fn-9"><mark style="color:purple;"><strong>NetMessage</strong></mark></a>, isreliable: <mark style="color:purple;"><strong>boolean</strong></mark>, isvoice: <mark style="color:purple;"><strong>boolean</strong></mark> )</summary>
+
+Called when the client wants to send a <mark style="color:purple;">**NetMessage**</mark> to the server, you can use this callback to intercept that and decide if you want to send it. It's possible to change the message data so we can do some light amount of tom foolery with the server like spoofing convar values
+
+You might want to check the leaked 2020 TF2 source code for the net messages and to see how they write & read them
+
+You might want to see how the BitBuffer class works, it is really important for this
+
+Example:
+
+```lua
+local clc_move = 9
+
+---@param msg NetMessage
+---@param isreliable boolean
+---@param isvoice boolean
+local function SendNetMessage(msg, isreliable, isvoice)
+   if msg:GetType() == clc_move then
+      local buffer = BitBuffer()
+      msg:WriteToBitBuffer(buffer)
+
+      --- skip 6 useless bits
+      buffer:SetCurBit(6)
+
+      local newcommands, backupcommands
+      newcommands = buffer:ReadInt(4)
+      backupcommands = buffer:ReadInt(3)
+
+      local formattedtext = string.format("new cmds: %s, backup cmds: %s", newcommands, backupcommands)
+      print(formattedtext)
+
+      buffer:Delete()
+   end
+
+   return true
+end
+
+callbacks.Register("SendNetMsg", SendNetMessage)
+```
+
+</details>
+
+<details>
+
+<summary>DoPostScreenSpaceEffects ( )</summary>
+
+Called after the screen space effects are drawn in the screen
+
+This is useful for drawing custom glows and other stuff
+
+Example:
+
+i have no good example, sorry
+
+was never able to make stuff with this callback work
+
+</details>
+
+#### GCSendMessage and GCRetrieveMessage exist, but I have no idea what they do. Even the example in the official lua documentation explains nothing <a href="#gcsendmessage-typeidinteger-datastringcmd" id="gcsendmessage-typeidinteger-datastringcmd"></a>
 
 ## Methods
 
@@ -353,3 +534,9 @@ callbacks.Unregister("Draw", "hi dad")
 [^5]: Still have to make this page
 
 [^6]: Gotta make the page
+
+[^7]: As always, I still have to make this page :(
+
+[^8]: Still gotta make this page, nice
+
+[^9]: I particularly love this class, but I still haven't made the page :p
