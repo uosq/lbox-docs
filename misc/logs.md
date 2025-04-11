@@ -18,6 +18,15 @@ DD/MM/YYYY format
 
 <details>
 
+<summary>11/04/2025</summary>
+
+* FINALLY finished the [callbacks](../libraries/callbacks.md) page :face\_holding\_back\_tears:
+* Made [client](../libraries/client.md) page
+
+</details>
+
+<details>
+
 <summary>07/04/2025</summary>
 
 * Edited [callbacks](../libraries/callbacks.md) page

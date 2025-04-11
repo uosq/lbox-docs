@@ -23,6 +23,7 @@
 * [http](libraries/http.md)
 * [aimbot](libraries/aimbot.md)
 * [callbacks](libraries/callbacks.md)
+* [client](libraries/client.md)
 
 ## Misc
 
