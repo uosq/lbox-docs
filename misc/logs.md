@@ -22,6 +22,7 @@ DD/MM/YYYY format
 
 * FINALLY finished the [callbacks](../libraries/callbacks.md) page :face\_holding\_back\_tears:
 * Made [client](../libraries/client.md) page
+* Edited [aimbot](../libraries/aimbot.md) page
 
 </details>
 
